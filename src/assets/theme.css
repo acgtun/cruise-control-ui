@@ -1,0 +1,145 @@
+/* Copyright 2017-2019 LinkedIn Corp. Licensed under the BSD 2-Clause License (the "License"). See License in the project root for license information. */
+
+/* Dark overrides for the Cosmo (Bootstrap 4) theme; light mode is unmodified Cosmo. */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --cc-bg: #16191d;
+  --cc-surface: #1f2329;
+  --cc-surface-2: #282d34;
+  --cc-border: #3a414b;
+  --cc-text: #dde1e6;
+  --cc-text-muted: #9aa4b1;
+  --cc-link: #5aa2f0;
+  --cc-link-hover: #8cbff5;
+}
+
+html[data-theme="dark"] body {
+  color: var(--cc-text);
+  background-color: var(--cc-bg);
+}
+
+html[data-theme="dark"] a { color: var(--cc-link); }
+html[data-theme="dark"] a:hover { color: var(--cc-link-hover); }
+html[data-theme="dark"] hr { border-top-color: var(--cc-border); }
+html[data-theme="dark"] pre { color: var(--cc-text); }
+html[data-theme="dark"] .text-muted { color: var(--cc-text-muted) !important; }
+html[data-theme="dark"] .text-info { color: #b98ad6 !important; }
+html[data-theme="dark"] .text-primary { color: var(--cc-link) !important; }
+html[data-theme="dark"] .bg-light { background-color: var(--cc-surface-2) !important; }
+html[data-theme="dark"] .close { color: var(--cc-text); text-shadow: none; }
+/* Cosmo's secondary (#373a3c) disappears against the dark surfaces. */
+html[data-theme="dark"] .badge-secondary,
+html[data-theme="dark"] .btn-secondary {
+  background-color: #4b525b;
+  border-color: #4b525b;
+}
+html[data-theme="dark"] .btn-secondary:hover,
+html[data-theme="dark"] .btn-secondary:focus {
+  background-color: #5c646e;
+  border-color: #5c646e;
+}
+
+/* Cards and tabs */
+html[data-theme="dark"] .card {
+  background-color: var(--cc-surface);
+  border-color: var(--cc-border);
+}
+html[data-theme="dark"] .card-header,
+html[data-theme="dark"] .card-footer {
+  background-color: var(--cc-surface-2);
+  border-color: var(--cc-border);
+}
+html[data-theme="dark"] .nav-tabs { border-bottom-color: var(--cc-border); }
+html[data-theme="dark"] .nav-tabs .nav-link:hover,
+html[data-theme="dark"] .nav-tabs .nav-link:focus {
+  border-color: var(--cc-border) var(--cc-border) transparent;
+}
+html[data-theme="dark"] .nav-tabs .nav-link.active {
+  color: var(--cc-text);
+  background-color: var(--cc-surface);
+  border-color: var(--cc-border) var(--cc-border) var(--cc-surface);
+}
+
+/* Tables */
+html[data-theme="dark"] .table { color: var(--cc-text); }
+html[data-theme="dark"] .table th,
+html[data-theme="dark"] .table td,
+html[data-theme="dark"] .table thead th,
+html[data-theme="dark"] .table-bordered,
+html[data-theme="dark"] .table-bordered th,
+html[data-theme="dark"] .table-bordered td {
+  border-color: var(--cc-border);
+}
+html[data-theme="dark"] .table .thead-light th {
+  color: var(--cc-text);
+  background-color: var(--cc-surface-2);
+  border-color: var(--cc-border);
+}
+html[data-theme="dark"] .table-striped tbody tr:nth-of-type(odd) { background-color: rgba(255, 255, 255, 0.03); }
+html[data-theme="dark"] .table-hover tbody tr:hover { color: var(--cc-text); background-color: rgba(255, 255, 255, 0.06); }
+html[data-theme="dark"] .table-primary, html[data-theme="dark"] .table-primary > th, html[data-theme="dark"] .table-primary > td { background-color: rgba(39, 128, 227, 0.25); }
+html[data-theme="dark"] .table-success, html[data-theme="dark"] .table-success > th, html[data-theme="dark"] .table-success > td { background-color: rgba(63, 182, 24, 0.25); }
+html[data-theme="dark"] .table-info, html[data-theme="dark"] .table-info > th, html[data-theme="dark"] .table-info > td { background-color: rgba(153, 84, 187, 0.3); }
+html[data-theme="dark"] .table-warning, html[data-theme="dark"] .table-warning > th, html[data-theme="dark"] .table-warning > td { background-color: rgba(255, 117, 24, 0.25); }
+html[data-theme="dark"] .table-danger, html[data-theme="dark"] .table-danger > th, html[data-theme="dark"] .table-danger > td { background-color: rgba(255, 0, 57, 0.25); }
+
+/* Alerts: Cosmo uses pale tints with dark text, which glare on a dark page. */
+html[data-theme="dark"] .alert-primary { color: #a9cdf5; background-color: rgba(39, 128, 227, 0.2); border-color: transparent; }
+html[data-theme="dark"] .alert-secondary { color: var(--cc-text); background-color: var(--cc-surface-2); border-color: transparent; }
+html[data-theme="dark"] .alert-success { color: #a6e491; background-color: rgba(63, 182, 24, 0.2); border-color: transparent; }
+html[data-theme="dark"] .alert-info { color: #d7b8e6; background-color: rgba(153, 84, 187, 0.25); border-color: transparent; }
+html[data-theme="dark"] .alert-warning { color: #ffc199; background-color: rgba(255, 117, 24, 0.2); border-color: transparent; }
+html[data-theme="dark"] .alert-danger { color: #ff99b0; background-color: rgba(255, 0, 57, 0.2); border-color: transparent; }
+html[data-theme="dark"] .alert .alert-link { color: inherit; }
+
+/* Forms */
+html[data-theme="dark"] .form-control,
+html[data-theme="dark"] .custom-select {
+  color: var(--cc-text);
+  background-color: var(--cc-bg);
+  border-color: var(--cc-border);
+}
+html[data-theme="dark"] .form-control:focus {
+  color: var(--cc-text);
+  background-color: var(--cc-bg);
+  border-color: #5aa2f0;
+}
+html[data-theme="dark"] .form-control::placeholder { color: var(--cc-text-muted); }
+html[data-theme="dark"] .form-control:disabled,
+html[data-theme="dark"] .form-control[readonly] {
+  background-color: var(--cc-surface-2);
+}
+html[data-theme="dark"] .input-group-text {
+  color: var(--cc-text);
+  background-color: var(--cc-surface-2);
+  border-color: var(--cc-border);
+}
+
+/* Dropdowns (navbar menus and in-page dropdowns) */
+html[data-theme="dark"] .dropdown-menu {
+  color: var(--cc-text);
+  background-color: var(--cc-surface-2);
+  border-color: var(--cc-border);
+}
+html[data-theme="dark"] .dropdown-item { color: var(--cc-text); }
+html[data-theme="dark"] .dropdown-item:hover,
+html[data-theme="dark"] .dropdown-item:focus {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+html[data-theme="dark"] .dropdown-item.active,
+html[data-theme="dark"] .dropdown-item:active {
+  color: #fff;
+  background-color: #2780e3;
+}
+html[data-theme="dark"] .dropdown-divider { border-top-color: var(--cc-border); }
+
+/* List groups, progress */
+html[data-theme="dark"] .list-group-item {
+  color: var(--cc-text);
+  background-color: var(--cc-surface);
+  border-color: var(--cc-border);
+}
+html[data-theme="dark"] .list-group-item-danger { color: #ff99b0; background-color: rgba(255, 0, 57, 0.2); }
+html[data-theme="dark"] .progress { background-color: var(--cc-surface-2); }

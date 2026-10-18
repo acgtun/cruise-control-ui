@@ -15,6 +15,12 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle='dropdown' title="Theme">{{ themeOptions[themePreference].icon }} {{ themeOptions[themePreference].label }}</a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a v-for="(opt, pref) in themeOptions" :key="pref" href='#' :class="['dropdown-item', { active: pref === themePreference }]" @click.prevent='setTheme(pref)'>{{ opt.icon }} {{ opt.label }}</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle='dropdown'>UI Administration</a>
         <div class="dropdown-menu">
           <router-link :to='{"name": "preferences"}' class="dropdown-item" target="_self">&#9881;  Preferences</router-link>
@@ -45,10 +51,23 @@ export default {
         url: null
       },
       csvTimer: null,
-      cclogo: cclogo
+      cclogo: cclogo,
+      themeOptions: {
+        light: { icon: '\u2600', label: 'Light' },
+        dark: { icon: '\u263E', label: 'Dark' },
+        system: { icon: '\u25D0', label: 'System' }
+      }
+    }
+  },
+  computed: {
+    themePreference () {
+      return this.$store.state.themePreference
     }
   },
   methods: {
+    setTheme (pref) {
+      this.$store.commit('setThemePreference', pref)
+    },
     configFetch () {
       let vm = this
       let notselected = true

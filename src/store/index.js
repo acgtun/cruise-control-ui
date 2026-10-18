@@ -2,6 +2,7 @@
 
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { loadPreference, savePreference, systemPrefersDark, resolveTheme } from '@/theme'
 
 Vue.use(Vuex)
 
@@ -39,9 +40,14 @@ export default new Vuex.Store({
     // user-task-id features
     userTasks: {
       // url: uuid (is the structure for this)
-    }
+    },
+    themePreference: loadPreference(), // one of: system, light, dark
+    systemDark: systemPrefersDark()
   },
   getters: {
+    theme: function (state) {
+      return resolveTheme(state.themePreference, state.systemDark)
+    },
     geturl: function (state) {
       return state.url
     },
@@ -71,6 +77,13 @@ export default new Vuex.Store({
     },
     configErrorMessage: function (state, val) {
       state.configErrorMessage = val
+    },
+    setThemePreference: function (state, pref) {
+      state.themePreference = pref
+      savePreference(pref)
+    },
+    setSystemDark: function (state, dark) {
+      state.systemDark = dark
     },
     setTaskId: function (state, params) {
       if (params.taskid) {

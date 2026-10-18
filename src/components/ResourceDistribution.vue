@@ -247,7 +247,7 @@ export default {
       return {
         datasets: [{
           data: [...Object.values(resources)],
-          backgroundColor: 'rgba(7, 66, 160, 0.5)'
+          backgroundColor: this.$store.getters.theme === 'dark' ? 'rgba(90, 162, 240, 0.6)' : 'rgba(7, 66, 160, 0.5)'
         }],
         labels: [...Object.keys(resources)].map(e => 'broker ' + e)
       }
@@ -257,24 +257,40 @@ export default {
       return this.getOptions(title)
     },
     getOptions (title) {
+      // Light values are the Chart.js 2 defaults.
+      let dark = this.$store.getters.theme === 'dark'
+      let fontColor = dark ? '#dde1e6' : '#666'
+      let gridLines = () => ({
+        color: dark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+        zeroLineColor: dark ? 'rgba(255, 255, 255, 0.25)' : 'rgba(0, 0, 0, 0.25)'
+      })
       let options = {
         legend: {
-          display: false
+          display: false,
+          labels: { fontColor: fontColor }
         },
         scales: {
+          xAxes: [{
+            ticks: { fontColor: fontColor },
+            gridLines: gridLines()
+          }],
           yAxes: [{
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              fontColor: fontColor
             },
+            gridLines: gridLines(),
             scaleLabel: {
               labelString: this.resource === 'cpu' ? '% cpu' : `nb ${this.resource}`,
-              display: true
+              display: true,
+              fontColor: fontColor
             }
           }]
         },
         title: {
           display: true,
-          text: title
+          text: title,
+          fontColor: fontColor
         }
       }
       return options
@@ -316,15 +332,13 @@ export default {
 
     getStackedOptions () {
       let options = this.getOptions(`stacked ${this.resource} view`)
-      options.scales.xAxes = [{ stacked: true }]
+      options.scales.xAxes[0].stacked = true
       options.scales.yAxes[0].stacked = true
       options.scales.yAxes[0].scaleLabel.labelString = this.resource === 'cpu' ? '% cpu' : `nb ${this.resource}`
       options.maintainAspectRatio = false
       options.responsive = true
-      options.legend = {
-        display: true,
-        position: 'bottom'
-      }
+      options.legend.display = true
+      options.legend.position = 'bottom'
       return options
     }
   }

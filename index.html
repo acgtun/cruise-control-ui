@@ -4,6 +4,15 @@
   <meta charset="utf8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Kafka Cruise Control UI</title>
+  <script>
+    // Set the theme before first paint to avoid a light flash; mirrors src/theme.js.
+    (function () {
+      var pref = null
+      try { pref = localStorage.getItem('cc-ui-theme') } catch (e) {}
+      var dark = pref === 'dark' || (pref !== 'light' && !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
+    })()
+  </script>
 </head>
 <body>
   <div id="app"></div>

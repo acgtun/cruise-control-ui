@@ -13,8 +13,13 @@ import Exception from '@/components/Exception'
 import AsyncTask from '@/components/AsyncTask'
 import 'bootstrap/js/dist/dropdown'
 import 'bootswatch/dist/cosmo/bootstrap.css'
+import './assets/theme.css'
+import { applyTheme, onSystemThemeChange } from './theme'
 
 Vue.use(Vuex)
+
+store.watch((state, getters) => getters.theme, applyTheme, { immediate: true })
+onSystemThemeChange((dark) => store.commit('setSystemDark', dark))
 
 Vue.component('exception', Exception)
 Vue.component('async-task', AsyncTask)
