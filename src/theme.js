@@ -40,6 +40,15 @@ export function applyTheme (theme) {
   document.documentElement.setAttribute('data-theme', theme)
 }
 
+// Fires when another tab changes the preference; key is null when storage is cleared.
+export function onStoredPreferenceChange (callback) {
+  window.addEventListener('storage', (e) => {
+    if (e.key === STORAGE_KEY || e.key === null) {
+      callback(loadPreference())
+    }
+  })
+}
+
 export function onSystemThemeChange (callback) {
   if (!darkQuery) {
     return

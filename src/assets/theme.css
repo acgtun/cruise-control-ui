@@ -26,6 +26,17 @@ html[data-theme="dark"] pre { color: var(--cc-text); }
 html[data-theme="dark"] .text-muted { color: var(--cc-text-muted) !important; }
 html[data-theme="dark"] .text-info { color: #b98ad6 !important; }
 html[data-theme="dark"] .text-primary { color: var(--cc-link) !important; }
+html[data-theme="dark"] .text-danger { color: #ff6b88 !important; }
+html[data-theme="dark"] code { color: #f68fbf; }
+html[data-theme="dark"] .navbar .navbar-item { color: var(--cc-link-hover); }
+html[data-theme="dark"] .btn-outline-primary { color: var(--cc-link); border-color: var(--cc-link); }
+html[data-theme="dark"] .btn-outline-primary:hover,
+html[data-theme="dark"] .btn-outline-primary:focus,
+html[data-theme="dark"] .show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #2780e3;
+  border-color: #2780e3;
+}
 html[data-theme="dark"] .bg-light { background-color: var(--cc-surface-2) !important; }
 html[data-theme="dark"] .close { color: var(--cc-text); text-shadow: none; }
 /* Cosmo's secondary (#373a3c) disappears against the dark surfaces. */
@@ -106,6 +117,7 @@ html[data-theme="dark"] .form-control:focus {
   border-color: #5aa2f0;
 }
 html[data-theme="dark"] .form-control::placeholder { color: var(--cc-text-muted); }
+html[data-theme="dark"] .form-check-input:disabled ~ .form-check-label { color: var(--cc-text-muted); }
 html[data-theme="dark"] .form-control:disabled,
 html[data-theme="dark"] .form-control[readonly] {
   background-color: var(--cc-surface-2);

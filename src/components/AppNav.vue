@@ -15,9 +15,13 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle='dropdown' title="Theme">{{ themeOptions[themePreference].icon }} {{ themeOptions[themePreference].label }}</a>
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle='dropdown' aria-haspopup="true" aria-expanded="false" title="Theme" :aria-label="'Theme: ' + themeOptions[themePreference].label">
+          <span aria-hidden="true">{{ themeOptions[themePreference].icon }}</span> {{ themeOptions[themePreference].label }}
+        </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a v-for="(opt, pref) in themeOptions" :key="pref" href='#' :class="['dropdown-item', { active: pref === themePreference }]" @click.prevent='setTheme(pref)'>{{ opt.icon }} {{ opt.label }}</a>
+          <a v-for="(opt, pref) in themeOptions" :key="pref" href='#' :class="['dropdown-item', { active: pref === themePreference }]" :aria-current="pref === themePreference ? 'true' : null" @click.prevent='setTheme(pref)'>
+            <span aria-hidden="true">{{ opt.icon }}</span> {{ opt.label }}
+          </a>
         </div>
       </li>
       <li class="nav-item dropdown">
